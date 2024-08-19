@@ -1,11 +1,9 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import GeneralInfoForm from "./components/forms/GeneralInfoForm/GeneralInfoForm";
+import "./App.css";
 
 function App() {
-
-  return (
-    
-  )
+  return <GeneralInfoForm />;
 }
 
-export default App
+export default App;
