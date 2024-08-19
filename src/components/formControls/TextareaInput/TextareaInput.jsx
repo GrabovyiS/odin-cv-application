@@ -1,11 +1,13 @@
+import { useId } from "react";
 import "./TextareaInput.css";
 
 function TextareaInput({ type = "text", name, label, onChange, value }) {
+  const id = useId();
   return (
     <div className="form-control">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <textarea
-        id={name}
+        id={id}
         name={name}
         onChange={onChange}
         value={value}

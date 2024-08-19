@@ -1,11 +1,13 @@
+import { useId } from "react";
 import "./Input.css";
 
 function Input({ type = "text", name, label, onChange, value }) {
+  const id = useId();
   return (
     <div className="form-control">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        id={`${name}${label}`}
+        id={id}
         name={name}
         onChange={onChange}
         value={value}
