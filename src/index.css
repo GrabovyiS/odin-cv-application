@@ -46,7 +46,6 @@ h1 {
 .form-control {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
   gap: 8px;
 }
 
@@ -70,4 +69,23 @@ h1 {
     display: flex;
     gap: 8px;
   }
+}
+
+fieldset {
+  padding: 8px;
+  border: 2px solid var(--white);
+  border-radius: 16px;
+
+  legend {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 4px;
+  }
+}
+
+form {
+  max-width: 400px;
+  padding: 16px;
+  border: 2px solid var(--white);
+  border-radius: 16px;
 }
