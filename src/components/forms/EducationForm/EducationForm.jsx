@@ -85,14 +85,14 @@ function EducationForm() {
               onChange={handleChange}
               value={education.startDate}
               type="date"
-              name="start-date"
+              name="startDate"
               label="Start date of study:"
             />
             <Input
               onChange={handleChange}
               value={education.endDate}
               type="date"
-              name="end-date"
+              name="endDate"
               label="End date of study:"
             />
             <div className="form-buttons">
