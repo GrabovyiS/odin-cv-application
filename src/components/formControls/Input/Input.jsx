@@ -7,7 +7,7 @@ function Input({ type = "text", name, label, onChange, value }) {
     <div className="form-control">
       <label htmlFor={name}>{label}</label>
       <input
-        id={name}
+        id={`${name}${label}`}
         name={name}
         onChange={onChange}
         value={value}
