@@ -1,4 +1,3 @@
-import StaticForm from "./components/forms/StaticForm/StaticForm";
 import GeneralInfoForm from "./components/forms/GeneralInfoForm/GeneralInfoForm";
 import EducationForm from "./components/forms/EducationForm/EducationForm";
 import "./App.css";
