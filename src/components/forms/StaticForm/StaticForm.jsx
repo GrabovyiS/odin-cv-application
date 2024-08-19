@@ -2,7 +2,7 @@ import Input from "../../formControls/Input/Input";
 import Button from "../../formControls/Button/Button";
 import { useState } from "react";
 
-function StaticForm({ fields, onSubmit }) {
+function StaticForm({ title, fields, onSubmit }) {
   // how fields would look
   // const fields = [
   //   {
@@ -32,6 +32,7 @@ function StaticForm({ fields, onSubmit }) {
 
   return (
     <form className="form-container" onSubmit={onSubmit} action="">
+      <h2>{title}</h2>
       {fields.map((field) => {
         return (
           <Input

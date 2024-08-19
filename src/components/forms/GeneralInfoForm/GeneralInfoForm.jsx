@@ -23,7 +23,9 @@ function GeneralInfoForm() {
     e.preventDefault();
   };
 
-  return <StaticForm fields={fields} onSubmit={handleSubmit} />;
+  return (
+    <StaticForm title={"General"} fields={fields} onSubmit={handleSubmit} />
+  );
 }
 
 export default GeneralInfoForm;

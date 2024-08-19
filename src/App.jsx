@@ -5,11 +5,14 @@ import JobExperienceForm from "./components/forms/JobExperienceForm/JobExperienc
 
 function App() {
   return (
-    <div>
-      <GeneralInfoForm />
-      <EducationForm />
-      <JobExperienceForm />
-    </div>
+    <main className="main-container">
+      <section className="forms-section">
+        <GeneralInfoForm />
+        <EducationForm />
+        <JobExperienceForm />
+      </section>
+      <section className="cv-section"></section>
+    </main>
   );
 }
 
