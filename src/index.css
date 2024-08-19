@@ -6,6 +6,11 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --black: #1a1a1a;
+  --white: #f9f9f9;
+  --danger: darkred;
+  --success: darkgreen;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
