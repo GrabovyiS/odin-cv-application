@@ -91,6 +91,7 @@ function DynamicForm({
                   <TextareaInput
                     key={`${field.name}${subForm.id}`}
                     name={field.name}
+                    required={field.required}
                     label={field.label}
                     onChange={handleChange}
                     value={subForm[field.name]}
@@ -101,6 +102,7 @@ function DynamicForm({
                   <Input
                     key={`${field.name}${subForm.id}`}
                     type={field.type}
+                    required={field.required}
                     name={field.name}
                     label={field.label}
                     onChange={handleChange}

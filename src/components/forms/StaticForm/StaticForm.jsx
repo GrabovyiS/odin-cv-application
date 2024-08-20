@@ -43,6 +43,7 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
           <Input
             key={`${field.name}${field.label}`}
             type={field.type}
+            required={field.required}
             name={field.name}
             label={field.label}
             onChange={handleChange}

@@ -6,6 +6,7 @@ function GeneralInfoForm({ handleSubmitCallback }) {
       type: "text",
       name: "name",
       label: "Name:",
+      required: true,
     },
     {
       type: "text",
@@ -16,11 +17,13 @@ function GeneralInfoForm({ handleSubmitCallback }) {
       type: "email",
       name: "email",
       label: "Email:",
+      required: true,
     },
     {
       type: "tel",
       name: "phone",
       label: "Phone:",
+      required: true,
     },
   ];
 

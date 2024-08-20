@@ -14,3 +14,9 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+label.label-required::after {
+  color: red;
+  content: " *";
+  display: inline;
+}

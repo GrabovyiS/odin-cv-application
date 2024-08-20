@@ -6,11 +6,13 @@ function WorkExperienceForm({ handleSubmitCallback }) {
       type: "text",
       name: "company",
       label: "Company name:",
+      required: true,
     },
     {
       type: "text",
       name: "title",
       label: "Position title:",
+      required: true,
     },
     {
       type: "textarea",
@@ -21,6 +23,7 @@ function WorkExperienceForm({ handleSubmitCallback }) {
       type: "date",
       name: "start-date",
       label: "Start date of work:",
+      required: true,
     },
     {
       type: "date",

@@ -6,9 +6,9 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState({});
-  const [educations, setEducations] = useState([{}]);
-  const [workExperiences, setWorkExperiences] = useState([{}]);
+  const [generalInfo, setGeneralInfo] = useState(null);
+  const [educations, setEducations] = useState(null);
+  const [workExperiences, setWorkExperiences] = useState(null);
 
   const handleGeneralSubmit = (generalData) => {
     setGeneralInfo(generalData);

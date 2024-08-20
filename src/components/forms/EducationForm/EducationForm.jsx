@@ -6,16 +6,19 @@ function EducationForm({ handleSubmitCallback }) {
       type: "text",
       name: "school",
       label: "School:",
+      required: true,
     },
     {
       type: "text",
       name: "title",
       label: "Title of study:",
+      required: true,
     },
     {
       type: "date",
       name: "start-date",
       label: "Start date of education:",
+      required: true,
     },
     {
       type: "date",
