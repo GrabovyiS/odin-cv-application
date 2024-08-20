@@ -23,7 +23,6 @@ function StaticForm({ title, fields, onSubmit }) {
   });
 
   const [formData, setFormData] = useState(emptyFormData);
-  console.log(emptyFormData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
