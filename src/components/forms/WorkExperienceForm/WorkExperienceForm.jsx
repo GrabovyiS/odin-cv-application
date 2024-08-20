@@ -1,20 +1,20 @@
 import DynamicForm from "../DynamicForm/DynamicForm";
 
-function JobExperienceForm() {
+function WorkExperienceForm({ handleSubmitCallback }) {
   const fields = [
     {
       type: "text",
-      name: "company-name",
+      name: "company",
       label: "Company name:",
     },
     {
       type: "text",
-      name: "position-title",
+      name: "title",
       label: "Position title:",
     },
     {
       type: "textarea",
-      name: "Responsibilities",
+      name: "responsibilities",
       label: "Responsibilities:",
     },
     {
@@ -34,8 +34,9 @@ function JobExperienceForm() {
       title="Work experience"
       objectName="job info"
       fields={fields}
+      handleSubmitCallback={handleSubmitCallback}
     />
   );
 }
 
-export default JobExperienceForm;
+export default WorkExperienceForm;

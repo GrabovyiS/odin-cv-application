@@ -2,13 +2,14 @@ import Input from "../../formControls/Input/Input";
 import Button from "../../formControls/Button/Button";
 import { useState } from "react";
 
-function StaticForm({ title, fields, onSubmit }) {
+function StaticForm({ title, fields, handleSubmitCallback }) {
   // how fields would look
   // const fields = [
   //   {
   //     type: 'text',
   //     name: 'name',
   //     label: 'Name:',
+  //     required: true,
   //   },
   //   {
   //     type: 'tel',
@@ -29,8 +30,13 @@ function StaticForm({ title, fields, onSubmit }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSubmitCallback(formData, e);
+  };
+
   return (
-    <form className="form-container" onSubmit={onSubmit} action="">
+    <form className="form-container" onSubmit={handleSubmit} action="">
       <h2>{title}</h2>
       {fields.map((field) => {
         return (

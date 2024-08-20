@@ -1,0 +1,5 @@
+section.cv-section {
+  border: 2px solid var(--white);
+  padding: 32px;
+  border-radius: 16px;
+}

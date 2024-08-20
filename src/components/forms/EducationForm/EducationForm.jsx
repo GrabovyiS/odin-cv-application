@@ -1,6 +1,6 @@
 import DynamicForm from "../DynamicForm/DynamicForm";
 
-function EducationForm() {
+function EducationForm({ handleSubmitCallback }) {
   const fields = [
     {
       type: "text",
@@ -29,6 +29,7 @@ function EducationForm() {
       title="Education"
       objectName="education info"
       fields={fields}
+      handleSubmitCallback={handleSubmitCallback}
     />
   );
 }

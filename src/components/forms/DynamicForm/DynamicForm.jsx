@@ -8,7 +8,7 @@ function DynamicForm({
   title,
   objectName,
   fields,
-  onSubmit = (e) => {
+  handleSubmitCallback = (e) => {
     e.preventDefault();
   },
 }) {
@@ -18,6 +18,7 @@ function DynamicForm({
   //     type: 'text',
   //     name: 'name',
   //     label: 'Name:',
+  //     required: true,
   //   },
   //   {
   //     type: 'tel',
@@ -67,8 +68,13 @@ function DynamicForm({
     setFormData(dataCopy);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSubmitCallback(formData, e);
+  };
+
   return (
-    <form className="form-container" onSubmit={onSubmit} action="">
+    <form className="form-container" onSubmit={handleSubmit} action="">
       <h2>{title}</h2>
 
       {formData.map((subForm) => {

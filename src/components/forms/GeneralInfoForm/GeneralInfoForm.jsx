@@ -1,11 +1,16 @@
 import StaticForm from "../StaticForm/StaticForm";
 
-function GeneralInfoForm() {
+function GeneralInfoForm({ handleSubmitCallback }) {
   const fields = [
     {
       type: "text",
       name: "name",
       label: "Name:",
+    },
+    {
+      type: "text",
+      name: "profession",
+      label: "Profession:",
     },
     {
       type: "email",
@@ -19,12 +24,12 @@ function GeneralInfoForm() {
     },
   ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   return (
-    <StaticForm title={"General"} fields={fields} onSubmit={handleSubmit} />
+    <StaticForm
+      title={"General"}
+      fields={fields}
+      handleSubmitCallback={handleSubmitCallback}
+    />
   );
 }
 
