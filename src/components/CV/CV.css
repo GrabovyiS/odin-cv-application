@@ -2,4 +2,47 @@ section.cv-section {
   border: 2px solid var(--white);
   padding: 32px;
   border-radius: 16px;
+
+  height: fit-content;
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 28px;
+    margin-top: 48px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  .position-title {
+    font-weight: normal;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cv-info {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 24px;
+    margin-top: 20px;
+
+    .cv-info-dates p {
+      margin-top: 4px;
+      font-size: 14px;
+      color: var(--light-gray);
+    }
+  }
+}
+
+@media (perfers-color-scheme: light) {
+  .cv-info-dates p {
+    color: var(--dark-gray);
+  }
 }

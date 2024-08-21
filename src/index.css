@@ -8,6 +8,8 @@
 
   --black: #1a1a1a;
   --white: #f9f9f9;
+  --light-gray: #bbb;
+  --dark-gray: #555;
   --danger: darkred;
   --success: darkgreen;
 
@@ -102,13 +104,39 @@ form {
 }
 
 #root {
-  margin: 48px 256px;
+  margin: 48px 278px;
+}
+
+@media screen and (width <= 1600px) {
+  #root {
+    margin: 48px 132px;
+  }
 }
 
 main.main-container {
   display: grid;
   grid-template-columns: minmax(300px, 400px) auto;
   gap: 128px;
+}
+
+@media screen and (width <= 1150px) {
+  h1 {
+    text-align: center;
+  }
+
+  main.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+
+    form {
+      width: 400px;
+    }
+  }
+  #root {
+    margin: 48px 32px;
+  }
 }
 
 section.forms-section {
