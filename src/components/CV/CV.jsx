@@ -3,12 +3,16 @@ import getTotalWorkExperience from "../../helpers/getTotalWorkExperience";
 
 function CV({ general, educations, workExperiences }) {
   let generalContent;
-  if (!general) {
+  if (!general && !educations && !workExperiences) {
     generalContent = (
       <>
         <h2>Start filling in your CV!</h2>
       </>
     );
+  } else if (!general) {
+    <>
+      <h2>Name</h2>
+    </>;
   } else {
     generalContent = (
       <>
@@ -16,10 +20,6 @@ function CV({ general, educations, workExperiences }) {
           {general.name || "Name"}
           {general.profession ? ", " + general.profession : ""}
         </h2>
-        <div className="contacts">
-          <p>{general.email || "email"}</p>
-          <p>{general.phone || "phone number"}</p>
-        </div>
       </>
     );
   }
@@ -30,17 +30,29 @@ function CV({ general, educations, workExperiences }) {
   } else {
     educationsContent = (
       <>
-        <h2>Education</h2>
+        <h3>Education</h3>
         {educations.map((education) => {
           return (
             <div key={education.id} className="cv-info">
-              <h3>
-                {education.title} in {education.school}
-              </h3>
-              <p className="cv-dates">
-                From {education["start-date"]} up to{" "}
-                {education["end-date"] || "now"}
-              </p>
+              <div className="cv-info-dates">
+                <p>
+                  {new Date(education["start-date"]).toLocaleString("default", {
+                    month: "long",
+                    year: "numeric",
+                  })}{" "}
+                  –{" "}
+                  {education["end-date"] === ""
+                    ? "Present"
+                    : new Date(education["end-date"]).toLocaleString(
+                        "default",
+                        { month: "long", year: "numeric" }
+                      )}
+                </p>
+              </div>
+              <div className="cv-info-content">
+                <h4>{education.school}</h4>
+                <p>Majored in: {education.title}</p>
+              </div>
             </div>
           );
         })}
@@ -52,32 +64,63 @@ function CV({ general, educations, workExperiences }) {
   if (!workExperiences) {
     workExperienceContent = <></>;
   } else {
+    const { totalYears, totalMonths } = getTotalWorkExperience(workExperiences);
+
+    // Sort work experiences from most recent to oldest
     workExperiences.sort((workExperience1, workExperience2) => {
       const startDate1 = new Date(workExperience1["start-date"]);
       const startDate2 = new Date(workExperience2["start-date"]);
 
-      return startDate1 - startDate2;
+      return startDate2 - startDate1;
     });
-
-    const { totalYears, totalMonths } = getTotalWorkExperience(workExperiences);
 
     workExperienceContent = (
       <>
-        <h2>Work Experience</h2>
+        <h3>Work Experience</h3>
         <p>
-          {totalYears} years {totalMonths} months
+          Total work experience:{" "}
+          {totalYears === 0
+            ? ""
+            : totalYears === 1
+            ? totalYears + " year"
+            : totalYears + " years"}{" "}
+          {totalMonths === 0
+            ? ""
+            : totalMonths === 1
+            ? totalMonths + " month"
+            : totalMonths + " months"}
         </p>
         {workExperiences.map((workExperience) => {
           return (
             <div key={workExperience.id} className="cv-info">
-              <h3>{workExperience.company}</h3>
-              <h4>{workExperience.title}</h4>
-              {workExperience.responsibilities && (
-                <>
-                  <p>{workExperience.responsibilities}</p>
-                </>
-              )}
-              <p className="cv-dates">{}</p>
+              <div className="cv-info-dates">
+                <p>
+                  {new Date(workExperience["start-date"]).toLocaleString(
+                    "default",
+                    { month: "long", year: "numeric" }
+                  )}{" "}
+                  –{" "}
+                  {workExperience["end-date"] === ""
+                    ? "Present"
+                    : new Date(workExperience["end-date"]).toLocaleString(
+                        "default",
+                        { month: "long", year: "numeric" }
+                      )}
+                </p>
+              </div>
+              <div className="cv-info-content">
+                <h4>
+                  {workExperience.company}{" "}
+                  <span className="position-title">
+                    | {workExperience.title}
+                  </span>
+                </h4>
+                {workExperience.responsibilities && (
+                  <>
+                    <p>{workExperience.responsibilities}</p>
+                  </>
+                )}
+              </div>
             </div>
           );
         })}
@@ -91,6 +134,7 @@ function CV({ general, educations, workExperiences }) {
   } else {
     footerContent = (
       <>
+        <h3>Contact me at:</h3>
         <div className="contacts">
           <p>{general.email}</p>
           <p>{general.phone}</p>

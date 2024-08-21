@@ -1,26 +1,35 @@
 function getTotalWorkExperience(workExperiences) {
+  const sortedWorkExperiences = workExperiences.toSorted(
+    (workExperience1, workExperience2) => {
+      const startDate1 = new Date(workExperience1["start-date"]);
+      const startDate2 = new Date(workExperience2["start-date"]);
+
+      return startDate1 - startDate2;
+    }
+  );
+
   const workRanges = [
     {
-      "start-date": new Date(workExperiences[0]["start-date"]),
+      "start-date": new Date(sortedWorkExperiences[0]["start-date"]),
       "end-date":
-        workExperiences[0]["end-date"] === ""
+        sortedWorkExperiences[0]["end-date"] === ""
           ? new Date()
-          : new Date(workExperiences[0]["end-date"]),
+          : new Date(sortedWorkExperiences[0]["end-date"]),
     },
   ];
   let currentWorkRangeIndex = 0;
 
   console.log(workRanges);
 
-  for (let i = 1; i < workExperiences.length; i++) {
+  for (let i = 1; i < sortedWorkExperiences.length; i++) {
     let currentWorkRange = workRanges[currentWorkRangeIndex];
 
-    let experienceStartDate = new Date(workExperiences[i]["start-date"]);
+    let experienceStartDate = new Date(sortedWorkExperiences[i]["start-date"]);
 
     let experienceEndDate =
-      workExperiences[i]["end-date"] === ""
+      sortedWorkExperiences[i]["end-date"] === ""
         ? new Date()
-        : new Date(workExperiences[i]["end-date"]);
+        : new Date(sortedWorkExperiences[i]["end-date"]);
 
     let workRangeEndDate =
       currentWorkRange["end-date"] === ""
