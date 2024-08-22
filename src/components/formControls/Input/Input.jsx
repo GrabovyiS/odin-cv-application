@@ -4,6 +4,7 @@ import "./Input.css";
 function Input({
   type = "text",
   name,
+  disabled = false,
   required = false,
   label,
   onChange,
@@ -19,6 +20,7 @@ function Input({
         id={id}
         value={value}
         type={type}
+        disabled={disabled}
         required={required}
         name={name}
         onChange={onChange}

@@ -7,11 +7,13 @@ function Button({
   alignSelf = "start",
   option = "primary",
   className,
+  disabled = false,
 }) {
   return (
     <button
       type={type}
       style={{ alignSelf }}
+      disabled={disabled}
       className={option + " " + className}
       onClick={onClick}
     >

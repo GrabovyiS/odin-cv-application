@@ -24,6 +24,7 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
   });
 
   const [formData, setFormData] = useState(emptyFormData);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,13 +33,14 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target.closest("form");
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach((input) => (input.disabled = true));
-    const buttons = form.querySelectorAll("button:not(.edit-button)");
-    buttons.forEach((button) => (button.disabled = true));
+    setSubmitted(true);
 
     handleSubmitCallback(formData, e);
+  };
+
+  const handleEditButton = (e) => {
+    e.preventDefault();
+    setSubmitted(false);
   };
 
   return (
@@ -49,6 +51,7 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
           <Input
             key={`${field.name}${field.label}`}
             type={field.type}
+            disabled={submitted}
             required={field.required}
             name={field.name}
             label={field.label}
@@ -59,10 +62,16 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
       })}
 
       <div className="form-buttons">
-        <Button type="submit" option="success">
+        <Button disabled={submitted} type="submit" option="success">
           Submit
         </Button>
-        <Button className="edit-button">Edit</Button>
+        <Button
+          disabled={!submitted}
+          onClick={handleEditButton}
+          className="edit-button"
+        >
+          Edit
+        </Button>
       </div>
     </form>
   );

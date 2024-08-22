@@ -3,6 +3,7 @@ import "./TextareaInput.css";
 
 function TextareaInput({
   type = "text",
+  disabled = false,
   required,
   name,
   label,
@@ -16,6 +17,7 @@ function TextareaInput({
       <textarea
         id={id}
         name={name}
+        disabled={disabled}
         required={required}
         onChange={onChange}
         value={value}

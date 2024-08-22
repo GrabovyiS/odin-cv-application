@@ -33,6 +33,7 @@ function DynamicForm({
   });
 
   const [formData, setFormData] = useState(emptyFormData);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleCreateSubForm = () => {
     const newData = { id: uuid() };
@@ -70,13 +71,14 @@ function DynamicForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target.closest("form");
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach((input) => (input.disabled = true));
-    const buttons = form.querySelectorAll("button:not(.edit-button)");
-    buttons.forEach((button) => (button.disabled = true));
+    setSubmitted(true);
 
     handleSubmitCallback(formData, e);
+  };
+
+  const handleEditButton = (e) => {
+    e.preventDefault();
+    setSubmitted(false);
   };
 
   return (
@@ -97,6 +99,7 @@ function DynamicForm({
                   <TextareaInput
                     key={`${field.name}${subForm.id}`}
                     name={field.name}
+                    disabled={submitted}
                     required={field.required}
                     label={field.label}
                     onChange={handleChange}
@@ -108,6 +111,7 @@ function DynamicForm({
                   <Input
                     key={`${field.name}${subForm.id}`}
                     type={field.type}
+                    disabled={submitted}
                     required={field.required}
                     name={field.name}
                     label={field.label}
@@ -119,6 +123,7 @@ function DynamicForm({
             })}
 
             <Button
+              disabled={submitted}
               alignSelf="end"
               onClick={handleDeleteSubForm}
               option="danger"
@@ -130,15 +135,25 @@ function DynamicForm({
       })}
 
       <div className="form-buttons">
-        <Button onClick={handleCreateSubForm} option="success">
+        <Button
+          disabled={submitted}
+          onClick={handleCreateSubForm}
+          option="success"
+        >
           Add {objectName ? objectName : "entry"}
         </Button>
       </div>
       <div className="form-buttons">
-        <Button type="submit" option="success">
+        <Button disabled={submitted} type="submit" option="success">
           Submit
         </Button>
-        <Button className="edit-button">Edit</Button>
+        <Button
+          disabled={!submitted}
+          onClick={handleEditButton}
+          className="edit-button"
+        >
+          Edit
+        </Button>
       </div>
     </form>
   );
