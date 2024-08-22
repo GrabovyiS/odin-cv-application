@@ -102,6 +102,10 @@ form {
   padding: 16px;
   border: 2px solid var(--white);
   border-radius: 16px;
+
+  h2 {
+    font-size: 28px;
+  }
 }
 
 #root {
