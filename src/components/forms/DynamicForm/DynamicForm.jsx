@@ -73,7 +73,11 @@ function DynamicForm({
     e.preventDefault();
     setSubmitted(true);
 
-    handleSubmitCallback(formData, e);
+    if (formData.length === 0) {
+      handleSubmitCallback(null, e);
+    } else {
+      handleSubmitCallback(formData, e);
+    }
   };
 
   const handleEditButton = (e) => {
