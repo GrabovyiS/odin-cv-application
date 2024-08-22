@@ -8,4 +8,4 @@ Basic validation with vanilla react implemented with callbacks
 
 ## Live app
 
-[https://sparkly-licorice-1a3587.netlify.app/](Live CV forms app)
+[View live app](https://sparkly-licorice-1a3587.netlify.app/)
