@@ -70,6 +70,12 @@ function DynamicForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target.closest("form");
+    const inputs = form.querySelectorAll("input");
+    inputs.forEach((input) => (input.disabled = true));
+    const buttons = form.querySelectorAll("button:not(.edit-button)");
+    buttons.forEach((button) => (button.disabled = true));
+
     handleSubmitCallback(formData, e);
   };
 
@@ -132,7 +138,7 @@ function DynamicForm({
         <Button type="submit" option="success">
           Submit
         </Button>
-        <Button>Edit</Button>
+        <Button className="edit-button">Edit</Button>
       </div>
     </form>
   );

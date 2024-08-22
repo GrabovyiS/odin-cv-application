@@ -12,6 +12,7 @@
   --dark-gray: #555;
   --danger: darkred;
   --success: darkgreen;
+  --disabled-grey: #333832;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

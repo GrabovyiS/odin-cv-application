@@ -6,12 +6,13 @@ function Button({
   onClick,
   alignSelf = "start",
   option = "primary",
+  className,
 }) {
   return (
     <button
       type={type}
       style={{ alignSelf }}
-      className={option}
+      className={option + " " + className}
       onClick={onClick}
     >
       {children}

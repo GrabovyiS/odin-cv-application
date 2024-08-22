@@ -5,6 +5,27 @@ input {
   background-color: #1a1a1a;
 }
 
+input:disabled {
+  background-color: var(--disabled-grey);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border: none;
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill:disabled,
+input:-webkit-autofill:hover:disabled,
+input:-webkit-autofill:focus:disabled {
+  -webkit-box-shadow: 0 0 0px 1000px var(--disabled-grey) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

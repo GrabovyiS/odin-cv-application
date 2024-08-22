@@ -1,6 +1,5 @@
 import StaticForm from "../StaticForm/StaticForm";
 
-function GeneralInfoForm({ handleSubmitCallback }) {
   const fields = [
     {
       type: "text",

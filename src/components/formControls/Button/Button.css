@@ -7,9 +7,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: var(--white);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -38,4 +40,17 @@ button.success {
 button.danger {
   color: var(--white);
   background-color: var(--danger);
+}
+
+button:hover:disabled {
+  border: 1px solid transparent;
+}
+
+button:focus:disabled,
+button:focus-visible:disabled {
+  outline: none;
+}
+
+button:disabled {
+  background-color: var(--disabled-grey);
 }
