@@ -8,9 +8,13 @@ function GeneralInfoForm({ handleSubmitCallback }) {
     return phoneRegex.test(phoneNumber);
   };
 
-  const validatePhone = (phoneNumber) => {
-    if (phoneIsValid(phoneNumber)) {
-      // setCustomValidity ...
+  const validatePhoneInput = (e) => {
+    if (!phoneIsValid(e.target.value)) {
+      e.target.setCustomValidity(
+        "Please enter a valid phone number like so: +12345678900"
+      );
+    } else {
+      e.target.setCustomValidity("");
     }
   };
 
@@ -37,6 +41,7 @@ function GeneralInfoForm({ handleSubmitCallback }) {
       name: "phone",
       label: "Phone:",
       required: true,
+      validate: validatePhoneInput,
     },
   ];
 

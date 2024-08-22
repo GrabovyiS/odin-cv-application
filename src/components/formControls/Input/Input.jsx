@@ -8,6 +8,7 @@ function Input({
   required = false,
   label,
   onChange,
+  validate,
   value,
 }) {
   const id = useId();
@@ -23,7 +24,14 @@ function Input({
         disabled={disabled}
         required={required}
         name={name}
-        onChange={onChange}
+        onChange={
+          validate
+            ? (e) => {
+                onChange(e);
+                validate(e);
+              }
+            : onChange
+        }
       />
     </div>
   );

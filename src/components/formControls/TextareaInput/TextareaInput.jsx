@@ -8,6 +8,7 @@ function TextareaInput({
   name,
   label,
   onChange,
+  validate,
   value,
 }) {
   const id = useId();
@@ -19,7 +20,14 @@ function TextareaInput({
         name={name}
         disabled={disabled}
         required={required}
-        onChange={onChange}
+        onChange={
+          validate
+            ? (e) => {
+                validate(e);
+                onChange(e);
+              }
+            : onChange
+        }
         value={value}
         type={type}
         rows="5"

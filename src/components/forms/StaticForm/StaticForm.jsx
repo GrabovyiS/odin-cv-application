@@ -56,6 +56,7 @@ function StaticForm({ title, fields, handleSubmitCallback }) {
             name={field.name}
             label={field.label}
             onChange={handleChange}
+            validate={field.validate}
             value={formData[field.name]}
           />
         );
